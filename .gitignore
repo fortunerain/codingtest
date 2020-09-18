@@ -1,0 +1,6 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+codingtest/.gradle
+.gradle/6.5/vcsMetadata-1/
+src/main/resources/
+src/test/resources/
