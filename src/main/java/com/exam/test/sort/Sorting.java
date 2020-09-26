@@ -9,6 +9,7 @@ import static com.exam.test.util.PrintUtil.printArray;
 public class Sorting {
   public static void main(String[] args) {
     int[] arr = {2, 4, 3, 7, 6, 5};
+    char[] chars = {'h','e','l','l','o'};
 
     //배열 오름차순 정렬
     Arrays.sort(arr);
@@ -20,7 +21,7 @@ public class Sorting {
 
     // 혹은 오름 차순 정렬 후 아래와 같이 직접 구현하여 뒤집는다.
     Arrays.sort(arr);
-    reverse(arr);
+    reverse(chars);
     printArray(arr);
 
     // List Sorting
@@ -34,13 +35,14 @@ public class Sorting {
   }
 
   // 단순 뒤집기
-  private static void reverse(int[] input) {
-    int last = input.length - 1;
-    int middle = input.length / 2;
-    for (int i = 0; i <= middle; i++) {
-      int temp = input[i];
-      input[i] = input[last - i];
-      input[last - i] = temp;
+  private static void reverse(char[] s) {
+    int left = 0;
+    int right = s.length -1;
+
+    while (left < right) {
+      char temp = s[left];
+      s[left++] = s[right];
+      s[right--] = temp;
     }
   }
 
