@@ -71,10 +71,16 @@ public class MapSorting {
       // thenComparing 으로 해결하는데 sorted 방법이 좀 다르다.
       // .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
       .sorted(Map.Entry.<String, Integer>comparingByValue().reversed()
-      .thenComparing(Map.Entry.comparingByKey()))
+        .thenComparing(Map.Entry.comparingByKey()))
       .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (v1, v2) -> v2, LinkedHashMap::new));
 
     System.out.println("reverseValueMap : " + reverseValueMap);
 //    return list_entries;
+  }
+
+  private static void getMaxValueKey(Map<String, Integer> map) {
+    String key = map.entrySet().stream()
+      .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+      .findFirst().get().getKey();
   }
 }
