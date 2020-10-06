@@ -1,4 +1,4 @@
-package com.exam.test.arraystring;
+package com.exam.test.exhaustive;
 
 import java.util.Set;
 import java.util.TreeSet;

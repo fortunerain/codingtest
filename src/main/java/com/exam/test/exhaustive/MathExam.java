@@ -5,7 +5,9 @@ import com.exam.test.util.PrintUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * https://programmers.co.kr/learn/courses/30/lessons/42840
+ */
 public class MathExam {
   public static void main(String[] args) {
     int[] answers = {1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5};
