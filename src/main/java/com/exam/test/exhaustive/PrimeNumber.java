@@ -19,6 +19,9 @@ public class PrimeNumber {
       }
     }
     System.out.println(count);
+
+
+
   }
 
   // 소수 구하기
