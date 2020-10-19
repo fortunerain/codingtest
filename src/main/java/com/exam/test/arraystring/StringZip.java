@@ -2,11 +2,12 @@ package com.exam.test.arraystring;
 
 public class StringZip {
   public static void main(String[] args) {
-    String s = "aabbaccc"; // 2a2ba3c
+    String s = "aabbacccd"; // 2a2ba3c
 
-    int zip = zip(s);
+    int zip = zip3(s);
     System.out.println(zip);
   }
+
 
   public static int zip(String s) {
     int answer = s.length();
@@ -62,28 +63,28 @@ public class StringZip {
   public static int zip2(String s) {
     int answer = s.length();
 
-    for(int n=1 ; n<=s.length()/2 ; n++) {
+    for (int n = 1; n <= s.length() / 2; n++) {
       StringBuilder temp = new StringBuilder();
 
-      for(int i=0 ; i<s.length() ; i = i+n) {
+      for (int i = 0; i < s.length(); i = i + n) {
         String word = "";
 
-        if(i+n >= s.length()) word = s.substring(i, s.length());
-        else word = s.substring(i, i+n);
+        if (i + n >= s.length()) word = s.substring(i, s.length());
+        else word = s.substring(i, i + n);
 
         int cnt = 1;
         StringBuilder sb = new StringBuilder();
 
-        for(int j=i+n ; j<s.length() ; j=j+n) {
+        for (int j = i + n; j < s.length(); j = j + n) {
           String word2 = "";
 
-          if(j+n >= s.length()) {
+          if (j + n >= s.length()) {
             word2 = s.substring(j, s.length());
           } else {
-            word2 = s.substring(j, j+n);
+            word2 = s.substring(j, j + n);
           }
 
-          if(word.equals(word2)) {
+          if (word.equals(word2)) {
             cnt++;
             i = j;
           } else {
@@ -91,7 +92,7 @@ public class StringZip {
           }
         }
 
-        if(cnt == 1) sb.append(word);
+        if (cnt == 1) sb.append(word);
         else sb.append(cnt).append(word);
 
         temp.append(sb.toString());
@@ -101,5 +102,31 @@ public class StringZip {
     }
 
     return answer;
+  }
+
+  public static int zip3(String s) {
+    int answer = 0;
+    for (int i = 1; i <= (s.length() / 2) + 1; i++) {
+      int result = recursiveString(s, i, 1).length();
+      answer = i == 1 ? result : (answer > result ? result : answer);
+    }
+    return answer;
+  }
+
+  private static String recursiveString(String s, int n, int i) {
+    if (s.length() < n) {
+      return s;
+    }
+
+    String result = "";
+    String prefix = s.substring(0, n);
+    String remain = s.substring(n);
+
+    if (!remain.startsWith(prefix)) {
+      if (i == 1) return result += prefix + recursiveString(remain, n, 1);
+      return result += i + prefix + recursiveString(remain, n, 1);
+    }
+
+    return result += recursiveString(remain, n, i + 1);
   }
 }

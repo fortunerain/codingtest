@@ -14,7 +14,7 @@ public class Subsequence {
     int len = s.length();
     String str = "";
 
-    List<String> array = new ArrayList<String>();
+    List<String> array = new ArrayList<>();
 
     for (int i = 0; i < len; i++) {
       for (int j = 1; j <= len - i; j++) {
